@@ -35,6 +35,7 @@ public class CalculatorX extends JFrame implements ActionListener{
             }
         });
 
+        // Запрет на ввод букв
         enter1.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -66,6 +67,14 @@ public class CalculatorX extends JFrame implements ActionListener{
                     e.consume();
                 }
 
+            }
+        });
+
+        // Запрет на редактирование c клавиатуры
+        result.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                e.consume();
             }
         });
 
@@ -118,7 +127,7 @@ public class CalculatorX extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton button = (JButton)e.getSource();
-        String command = button.getActionCommand();
+        String command = button.getActionCommand(); // Считываю кая кнопка создала событие
         //System.out.println(command);
         double firstNumber = 0;
         double secondNumber = 0;
@@ -154,7 +163,6 @@ public class CalculatorX extends JFrame implements ActionListener{
                     result = String.valueOf(df.format(firstNumber / secondNumber));
                     break;
                 }
-
             case("*"):
                 result = String.valueOf(df.format(firstNumber * secondNumber));
                 break;
